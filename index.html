@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="logo.png">
+  <title>Calculadora Financeira</title>
+  <!-- Font Awesome CDN para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-papbFI9bCj6zt0+mPHZgQ35QXGcvD7vnU4Yl91HxN1yBj5KTrTJjXKPHXmUqN+HTbFqvgFz+rTX5fG7/ebdPQw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <aside class="sidebar">
+    <a href="#calculadora-inss-ir">
+      <img class="logo" src="logo.png">
+    </a>
+    <h2>Calculadoras</h2>
+    <nav>
+      <a href="#calculadora-inss-ir"><i class="fa-solid fa-money-bill-wave"></i> IR Mensal</a>
+      <a href="#tarifas-exportacao"><i class="fa-solid fa-ship"></i> Exportação</a>
+      <a href="#conversor-moedas"><i class="fa-solid fa-exchange-alt"></i> Conversor</a>
+      <a href="#calculadora-frete"><i class="fa-solid fa-truck"></i> Frete</a>
+    </nav>
+  </aside>
+
+  <main class="conteudo">
+    <header>
+      <h1>Calculadora Financeira Completa</h1>
+      <p>Impostos, Exportação, Conversão e Frete.</p>
+    </header>
+
+    <!-- Seção IR -->
+
+
+  <!-- Calculadora INSS + IR -->
+  <section class="card" id="calculadora-inss-ir">
+    <h2><i class="fa-solid fa-calculator"></i> Calculadora INSS & IR</h2>
+    <form id="form-calculo">
+      <label for="salario">Informe seu salário bruto:</label>
+      <input type="number" id="salario" min="0" step="0.01" placeholder="R$ 0,00" required />
+      <button type="submit"><i class="fa-solid fa-arrow-right"></i> Calcular</button>
+    </form>
+    <div id="resultado" class="resultado"></div>
+    <canvas id="chartInssIr" width="300" height="300"></canvas>
+  </section>
+
+  <!-- Tarifas de Exportação -->
+  <section class="card" id="tarifas-exportacao">
+    <h2><i class="fa-solid fa-ship"></i> Tarifas de Exportação</h2>
+    <form id="form-exportacao">
+      <label for="valor-produto">Valor do produto (USD):</label>
+      <input type="number" id="valor-produto" min="0" step="0.01" required />
+      <label for="percent-tarifa">Alíquota da tarifa (%):</label>
+      <input type="number" id="percent-tarifa" min="0" max="100" step="0.01" required />
+      <button type="submit"><i class="fa-solid fa-calculator"></i> Calcular Tarifa</button>
+    </form>
+    <div id="resultado-exportacao" class="resultado"></div>
+    <canvas id="chartExportacao" width="300" height="300"></canvas>
+  </section>
+
+  <!-- Conversor de moedas -->
+  <section class="card" id="conversor-moedas">
+    <h2><i class="fa-solid fa-coins"></i> Conversor de Moedas</h2>
+    <form id="form-conversor">
+      <label for="valor-brl">Valor em Reais (BRL):</label>
+      <input type="number" id="valor-brl" min="0" step="0.01" required />
+      <label for="moeda-destino">Converter para:</label>
+      <select id="moeda-destino" required>
+        <option value="" disabled selected>Selecione</option>
+        <option value="USD">Dólar (USD)</option>
+        <option value="EUR">Euro (EUR)</option>
+        <option value="GBP">Libra (GBP)</option>
+        <option value="JPY">Iene (JPY)</option>
+        <option value="CAD">Dólar Canadense (CAD)</option>
+      </select>
+      <button type="submit"><i class="fa-solid fa-arrow-right-arrow-left"></i> Converter</button>
+    </form>
+    <div id="resultado-conversor" class="resultado"></div>
+    <canvas id="chartConversor"></canvas>
+  </section>
+
+  <!-- Calculadora de Frete -->
+  <section class="card" id="calculadora-frete">
+    <h2><i class="fa-solid fa-truck"></i> Calculadora de Frete</h2>
+    <form id="form-frete">
+      <label for="peso">Peso (kg):</label>
+      <input type="number" id="peso" min="0" step="0.01" required />
+      <label for="distancia">Distância (km):</label>
+      <input type="number" id="distancia" min="0" required />
+      <label for="modalidade">Modalidade:</label>
+      <select id="modalidade" required>
+        <option value="" disabled selected>Selecione</option>
+        <option value="rodoviario">Rodoviário</option>
+        <option value="aereo">Aéreo</option>
+        <option value="maritimo">Marítimo</option>
+      </select>
+      <button type="submit"><i class="fa-solid fa-calculator"></i> Calcular Frete</button>
+    </form>
+    <div id="resultado-frete" class="resultado"></div>
+    <canvas id="chartFrete" width="300" height="300"></canvas>
+  </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
